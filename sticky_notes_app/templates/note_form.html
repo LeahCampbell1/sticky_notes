@@ -1,0 +1,30 @@
+<!-- Extend base template, give dynamic page title -->
+{% extends 'notes/base.html' %}
+{% block title %}
+Sticky-notes Board -
+{% if form.instance.pk %}
+Edit
+{% else %}
+Create
+{% endif %}
+Note
+{% endblock %}
+{% block content %}
+<h2>
+    {% if form.instance.pk %}
+    Edit
+    {% else %}
+    Create
+    {% endif %}
+    Note
+</h2>
+<form method="post"
+    action="{% if form.instance.pk %}{% url 'update_note' pk=form.instance.pk %}{% else %}{% url 'create_note' %}{% endif %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">
+        Save
+    </button>
+</form>
+<a class="local-link" href="{% url 'list_notes' %}">Back to notes List</a>
+{% endblock %}

@@ -1,0 +1,25 @@
+<!-- Extend base template, give dynamic page title -->
+{% extends 'notes/base.html' %}
+{% block title %}
+Sticky-notes - {{ note.title }}
+{% endblock %}
+{% block content %}
+<!-- Define note detail section -->
+<section class="note-detail">
+    <h2>
+        {{ note.title }}
+    </h2>
+    <p>
+        {{ note.content }}
+    </p>
+    <p>
+        Created at: {{ note.created_at }}
+    </p>
+</section>
+<!-- Update and delete links-->
+<div class="note-actions">
+    <a class="local-link" href="{% url 'update_note' pk=note.pk %}">Update Note</a>
+    <a class="local-link" href="{% url 'note_delete' pk=note.pk %}">Delete Note</a>
+    <a class="local-link" href="{% url 'list_notes' %}">Back to Note List</a>
+</div>
+{% endblock %}

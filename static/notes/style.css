@@ -1,0 +1,88 @@
+/* Main body */
+body {
+    font-family: "Arial", sans-serif;
+    background-color: rosybrown;
+}
+
+/* Header formatting */
+header {
+    background-color: saddlebrown;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Page margin */
+main {
+    margin: 20px;
+}
+
+/* List of notes formating */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Line item formatting */
+li {
+    margin-bottom: 20px;
+}
+
+/* Decorative footer */
+footer {
+    background-color: saddlebrown;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Note boxes */
+.notes-list li {
+    list-style: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #f9fafb;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* Note detail */
+.note-detail {
+    list-style: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #f9fafb;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* Add, update and delet options */
+.note-actions a {
+    display: inline-block;
+    margin-right: 15px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: saddlebrown;
+    color: white;
+}
+
+/* Notes hover */
+/* Used https://coddy.tech/docs/css/hover for reference */
+.notes-list li:hover {
+    border-color: slategrey;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Linkformatting */
+.local-link {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 15px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: saddlebrown;
+    color: white;
+}

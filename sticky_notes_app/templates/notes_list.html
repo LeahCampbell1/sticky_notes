@@ -1,0 +1,28 @@
+<!-- Extend base template, give dynamic page title -->
+{% extends 'notes/base.html' %}
+{% block title %}
+Sticky-notes Board - {{ title }}
+{% endblock %}
+{% block content %}
+<!-- Header section-->
+<h2>
+    {{ title }}
+</h2>
+<!-- Create note link-->
+<a class="local-link" href="{% url 'create_note' %}">Add note</a>
+<!-- List of notes -->
+<ul class="notes-list">
+    {% for note in notes %}
+    <li>
+        <!-- Link to note detail -->
+        <a class="local-link" href="{% url 'note_detail' pk=note.pk %}">
+            {{ note.title }}
+        </a>
+        <!-- Note paragraph-->
+        <p>
+            {{ note.content }}
+        </p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
