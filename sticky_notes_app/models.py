@@ -1,14 +1,21 @@
+
 from django.db import models
 
 
-# Define attributes for sql table
-# Used course material "Django Sticky Notes application.pdf"
-# for reference to note model format
 class Note(models.Model):
+    """Represent a sticky note in the database.
+
+    Stores the note title, content and creation date.
+    """
+
     title = models.CharField(max_length=255)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
-    # Define string method for outputting string
     def __str__(self):
+        """Return the note title as a string.
+
+        :returns: The note title.
+        :rtype: str
+        """
         return self.title
