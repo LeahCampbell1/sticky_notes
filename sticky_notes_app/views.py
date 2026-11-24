@@ -1,4 +1,5 @@
-# Import functions for http
+
+# Import functions for HTTP
 from django.shortcuts import render, get_object_or_404, redirect
 # Import note model
 from .models import Note
@@ -6,10 +7,13 @@ from .models import Note
 from .forms import NoteForm
 
 
-# Define view function for notes list used course material
-# course material "Django Sticky Notes application.pdf" for
-# reference to function formatting
 def list_notes(request):
+    """Display a list of all notes.
+
+    :param request: The HTTP request object.
+    :returns: The rendered notes list page.
+    :rtype: HttpResponse
+    """
     notes = Note.objects.all()
 
     context = {
@@ -19,15 +23,25 @@ def list_notes(request):
     return render(request, "notes_list.html", context)
 
 
-# Define view function for note detail
 def note_detail(request, pk):
+    """Display the details of a selected note.
+
+    :param request: The HTTP request object.
+    :param int pk: The note's primary key.
+    :returns: The rendered note detail page.
+    :rtype: HttpResponse
+    """
     note = get_object_or_404(Note, pk=pk)
     return render(request, "note_detail.html", {"note": note})
 
 
-# Define view function to create note
 def create_note(request):
-    # Request form for post requests
+    """Create a new note using the submitted form.
+
+    :param request: The HTTP request object.
+    :returns: The rendered form or a redirect to the notes list.
+    :rtype: HttpResponse
+    """
     if request.method == "POST":
         form = NoteForm(request.POST)
         if form.is_valid():
@@ -39,8 +53,14 @@ def create_note(request):
     return render(request, "note_form.html", {"form": form})
 
 
-# Define view function to update note
 def update_note(request, pk):
+    """Update an existing note.
+
+    :param request: The HTTP request object.
+    :param int pk: The note's primary key.
+    :returns: The rendered form or a redirect to the notes list.
+    :rtype: HttpResponse
+    """
     note = get_object_or_404(Note, pk=pk)
     if request.method == "POST":
         form = NoteForm(request.POST, instance=note)
@@ -53,8 +73,14 @@ def update_note(request, pk):
     return render(request, "note_form.html", {"form": form})
 
 
-# Define view function to delete note
 def delete_note(request, pk):
+    """Delete an existing note.
+
+    :param request: The HTTP request object.
+    :param int pk: The note's primary key.
+    :returns: A redirect to the notes list.
+    :rtype: HttpResponseRedirect
+    """
     note = get_object_or_404(Note, pk=pk)
     note.delete()
     return redirect("list_notes")
